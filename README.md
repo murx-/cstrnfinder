@@ -4,7 +4,7 @@ A Binary Ninja plugin to help uncover potentially faulty string compares. Based 
 
 ## Example
 
-[Example Output](https://github.com/murx-/cstrnfinder/blob/master/img/screenshot.png?raw=true)
+![Example Output](https://github.com/murx-/cstrnfinder/blob/master/img/screenshot.png?raw=true)
 
 ## Limitations
 
