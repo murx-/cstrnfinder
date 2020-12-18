@@ -1,6 +1,6 @@
 # cstrnfinder
 
-A Binary Ninja plugin to help uncover potentially faulty string compares. Based on the idea of [@disconnect3d_pl](https://twitter.com/disconnect3d_pl/). For further information about the idea take a look at the @disconnect3d_pl's [slides](https://docs.google.com/presentation/d/1VpXqzPIPrfIPSIiua5ClNkjKAzM3uKlyAKUf0jBqoUI/edit#slide=id.g70c6018123_0_12) oder [presentation](ttps://youtu.be/-xVBd8MGlJs?t=192). 
+A Binary Ninja plugin to help uncover potentially faulty string compares. Based on the idea of [@disconnect3d_pl](https://twitter.com/disconnect3d_pl/). For further information about the idea take a look at the @disconnect3d_pl's [slides](https://docs.google.com/presentation/d/1VpXqzPIPrfIPSIiua5ClNkjKAzM3uKlyAKUf0jBqoUI/edit#slide=id.g70c6018123_0_12) or [presentation](https://youtu.be/-xVBd8MGlJs?t=192). 
 
 ## Example
 
