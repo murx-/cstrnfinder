@@ -12,6 +12,16 @@ class Issue():
         self.hlil_instr = hlil_instr
         self.checked  = string_literal[:n]
         self.un_checked = string_literal[n:]
+        self.interesting = 0
+
+        # Do some checks to determin if the skipped parts more interesting than others
+        # e.g. / is missed from a file path or nly .ex instead of .exe is checked...
+        if "." in string_literal[-5:]:
+            self.interesting += 1
+        if "/" in self.un_checked:
+            self.interesting += 1
+        if "\\" in self.un_checked:
+            self.interesting += 1
     
     def as_markdown_row(self):
         return " ".join([
@@ -33,6 +43,7 @@ class Issue():
             f"<td> {len(self.string_literal)} </td>",
             f"<td> {len(self.string_literal) - self.n} </td>",
             f"<td><code>{escape(self.hlil_instr)}</code></td>",
+            f"<td> {self.interesting} </td>"
             "</tr>",
         ])
 
@@ -94,20 +105,28 @@ class Cstrfinder():
     
     def show_html_report(self):
         html_report = [
-            "<html> <head> <title> cstrnfinder </title> </head> <body> ",
-            "<table style='width:100%'>"
+            "<html> <head>",
+            '<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.22/datatables.min.css"/>',
+            '<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.22/datatables.min.js"></script>',
+            """<script>$(document).ready(function() { $('#cstrnfinder').DataTable( { "paging": false, "info": false } ); } );</script>""",
+            "<title> cstrnfinder </title> </head> <body> ",
+            "<table id='cstrnfinder'>",
+            "<thead>",
             "<tr>",
-            "<td>Address</td>",
-            "<td>String</td>",
-            "<td>Constant n</td>",
-            "<td>Strlen</td>",
-            "<td>Difference</td>",
-            "<td>Pseudo Code</td>",
+            "<th>Address</th>",
+            "<th>String</th>",
+            "<th>Constant n</th>",
+            "<th>Strlen</th>",
+            "<th>Difference</th>",
+            "<th>Pseudo Code</th>",
+            "<th>Interesting?</th>",
             "</tr>",
+            "</thead>",
+            "<tbody>",
         ]
         for issue in self.issues:
             html_report.append(issue.as_html_row())
-        html_report.append("</table></body></html>")
+        html_report.append("</tbody></table></body></html>")
         report = "\n".join(html_report)
         self.bv.show_html_report("cstrfinder", report)
 

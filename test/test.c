@@ -9,7 +9,9 @@ int main () {
     
     a += strncmp(str_a, "prefix_", 7);
     a += strncmp(str_a, "prefix_", 6);
+    a += strncmp(str_a, "prefix><_", 6);
     a += strncmp(str_a, "prefix_", 8);
+    a += strncmp(str_a, "A/Long/Long/Path/", 8);
     a += strncmp(str_a, "prefixloong_", 12);
     a += strncmp(str_a, "prefixloong_", 10);
     a += strncmp(str_a, "prefixloong_", 14);
